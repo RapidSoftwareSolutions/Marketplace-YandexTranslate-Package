@@ -97,7 +97,7 @@
                     "name": "lang",
                     "type": "String",
                     "info": "The translation direction. You can set it in either of the following ways: 1. As a pair of language codes separated by a hyphen (\u201cfrom\u201d-\u201cto\u201d). For example, en-ru indicates translating from English to Russian. 2. As the target language code (for example, ru). In this case, the service tries to detect the source language automatically.",
-                    "required": false
+                    "required": true
                 },
                 {
                     "name": "format",
