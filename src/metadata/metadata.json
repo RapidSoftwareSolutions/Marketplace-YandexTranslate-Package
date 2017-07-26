@@ -1,0 +1,127 @@
+{
+    "package": "YandexTranslate",
+    "tagline": "Yandex Translate API",
+    "description": "The API provides access to the Yandex online machine translation service. It supports more than 70 languages and can translate separate words or complete texts. The API makes it possible to embed Yandex.Translate in a mobile app or web service for end users. Or translate large quantities of text, such as technical documentation.",
+    "image": "https:\/\/logo.clearbit.com\/yandex.com",
+    "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-YandexTranslate-Package",
+    "keywords": [
+        "API",
+        "translate"
+    ],
+    "accounts": {
+        "domain": "yandex.com",
+        "credentials": [
+            "apiKey"
+        ]
+    },
+    "blocks": [
+        {
+            "name": "getSupportedLanguages",
+            "description": "Gets a list of translation directions supported by the service.",
+            "args": [
+                {
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your yandex api key.",
+                    "required": true
+                },
+                {
+                    "name": "ui",
+                    "type": "String",
+                    "info": "In the response, supported languages are listed in the langs field with the definitions of the language codes. Language names are output in the language corresponding to the code in this parameter.",
+                    "required": true
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "detectLanguage",
+            "description": "Detects the language of the specified text.",
+            "args": [
+                {
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your yandex api key.",
+                    "required": true
+                },
+                {
+                    "name": "text",
+                    "type": "String",
+                    "info": "The text to detect the language for.",
+                    "required": true
+                },
+                {
+                    "name": "hint",
+                    "type": "String",
+                    "info": "A list of the most likely languages (they will be given preference when detecting the text language). Use the comma as a separator.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        },
+        {
+            "name": "translate",
+            "description": "Translates text to the specified language.",
+            "args": [
+                {
+                    "name": "apiKey",
+                    "type": "credentials",
+                    "info": "Your yandex api key.",
+                    "required": true
+                },
+                {
+                    "name": "text",
+                    "type": "String",
+                    "info": "The text to translate.",
+                    "required": true
+                },
+                {
+                    "name": "lang",
+                    "type": "String",
+                    "info": "The translation direction. You can set it in either of the following ways: 1. As a pair of language codes separated by a hyphen (\u201cfrom\u201d-\u201cto\u201d). For example, en-ru indicates translating from English to Russian. 2. As the target language code (for example, ru). In this case, the service tries to detect the source language automatically.",
+                    "required": false
+                },
+                {
+                    "name": "format",
+                    "type": "String",
+                    "info": "Text format. Possible values: plain - Text without markup (default value). html - Text in HTML format.",
+                    "required": false
+                },
+                {
+                    "name": "options",
+                    "type": "String",
+                    "info": "The only option available at this time is whether the response should include the automatically detected language of the text being translated. This corresponds to the value 1 for this parameter. If the language of the text being translated is defined explicitly, meaning the lang parameter is set as a pair of codes, the first code defines the source language. This means that the options parameter does not allow switching to automatic language detection. However, it does allow you to understand whether the source language was defined correctly in the lang parameter.",
+                    "required": false
+                }
+            ],
+            "callbacks": [
+                {
+                    "name": "error",
+                    "info": "Error"
+                },
+                {
+                    "name": "success",
+                    "info": "Success"
+                }
+            ]
+        }
+    ]
+}
