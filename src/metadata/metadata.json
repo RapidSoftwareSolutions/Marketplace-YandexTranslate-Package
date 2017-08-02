@@ -62,7 +62,7 @@
                 {
                     "name": "hint",
                     "type": "String",
-                    "info": "A list of the most likely languages (they will be given preference when detecting the text language). Use the comma as a separator.",
+                    "info": "The most likely language (they will be given preference when detecting the text language).",
                     "required": false
                 }
             ],
@@ -101,13 +101,15 @@
                 },
                 {
                     "name": "format",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["plain","html"],
                     "info": "Text format. Possible values: plain - Text without markup (default value). html - Text in HTML format.",
                     "required": false
                 },
                 {
                     "name": "options",
-                    "type": "String",
+                    "type": "Select",
+                    "options": ["Detect languages"],
                     "info": "The only option available at this time is whether the response should include the automatically detected language of the text being translated. This corresponds to the value 1 for this parameter. If the language of the text being translated is defined explicitly, meaning the lang parameter is set as a pair of codes, the first code defines the source language. This means that the options parameter does not allow switching to automatic language detection. However, it does allow you to understand whether the source language was defined correctly in the lang parameter.",
                     "required": false
                 }

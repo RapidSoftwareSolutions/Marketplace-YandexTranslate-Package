@@ -16,6 +16,10 @@ $app->post('/api/YandexTranslate/translate', function ($request, $response) {
     $optionalParams = ['lang'=>'lang','format'=>'format','options'=>'options'];
     $bodyParams = ['key','text','lang','format','options'];
 
+    if(isset($bodyParams['options']) && $bodyParams['options']=='Detect languages'){
+        $bodyParams['options'] = 1;
+    }
+
     $data = \Models\Params::createParams($requiredParams, $optionalParams, $post_data['args']);
     $requestBody = \Models\Params::createRequestBody($data, $bodyParams);
 
