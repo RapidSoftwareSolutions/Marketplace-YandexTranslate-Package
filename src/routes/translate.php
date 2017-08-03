@@ -16,18 +16,21 @@ $app->post('/api/YandexTranslate/translate', function ($request, $response) {
     $optionalParams = ['lang'=>'lang','format'=>'format','options'=>'options'];
     $bodyParams = ['key','text','lang','format','options'];
 
-    if(isset($bodyParams['options']) && $bodyParams['options']=='Detect languages'){
-        $bodyParams['options'] = 1;
-    }
 
     $data = \Models\Params::createParams($requiredParams, $optionalParams, $post_data['args']);
     $requestBody = \Models\Params::createRequestBody($data, $bodyParams);
+
+    if(!empty($requestBody['options'])){
+        $requestBody['options'] = 1;
+    }
 
     $client = $this->httpClient;
     $query_str = "https://translate.yandex.net/api/v1.5/tr.json/translate";
 
     $requestParams['headers'] = [];
     $requestParams['query'] = $requestBody;
+
+
 
     try {
         $resp = $client->get($query_str, $requestParams);
